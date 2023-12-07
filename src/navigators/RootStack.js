@@ -8,6 +8,7 @@ const {primary, tertiary} = Colors;
 import Login from "../screens/login/Login";
 import Register from "../screens/register/Register";
 import Welcome from "../screens/welcome/Welcome";
+import HomeScreen from "../screens/home/HomeScreen";
 // ojo pelao
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ const RootStack = () => {
             >
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Register" component={Register}/>
+                <Stack.Screen name="Home" component={HomeScreen}/>
                 <Stack.Screen options={{headerTintColor: primary}} name="Welcome" component={Welcome}/>
             </Stack.Navigator>
         </NavigationContainer>
