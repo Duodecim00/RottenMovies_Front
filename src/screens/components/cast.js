@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import React from 'react';
-import { fallbackPersonImage, image185, image342 } from '../../api/moviedb';
+import { fallbackPersonImage, image185, image342, image500} from '../../api/moviedb';
 var {width, height} = Dimensions.get('window');
 
 export default function Cast({cast, navigation}) {
@@ -23,8 +23,8 @@ export default function Cast({cast, navigation}) {
                                 className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500">
                                 <Image 
                                     className="rounded-2xl h-24 w-20"
+                                    source={{uri: image500(person?.profile_path) || fallbackPersonImage}} 
                                     // source={require('../assets/images/castImage1.png')} 
-                                    source={{uri: image185(person?.profile_path) || fallbackPersonImage}} 
                                 />
                             </View>
                             

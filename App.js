@@ -13,7 +13,6 @@ export default function App() {
   return (
     // <AuthProvider></AuthProvider>
   // <RootStack/>
-  //  <HomeScreen></HomeScreen>
   <AppNavigation />
   );
 }
