@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import Loading from '../components/loading';
 import { styles } from '../../theme';
 
-const ios = Platform.OS === 'ios';
+const ios = Platform.OS === 'android';
 
 export default function HomeScreen() {
 
