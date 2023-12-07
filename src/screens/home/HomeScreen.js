@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Platform, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {Bars3CenterLeftIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline';
@@ -8,9 +8,9 @@ import { StatusBar } from 'expo-status-bar';
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from '../../api/moviedb';
 import { useNavigation } from '@react-navigation/native';
 import Loading from '../components/loading';
-import { styles } from '../../theme';
+//import { styles } from '../../theme';
 
-const ios = Platform.OS === 'android';
+const ios = Platform.OS === 'ios';
 
 export default function HomeScreen() {
 
@@ -44,12 +44,11 @@ export default function HomeScreen() {
     if(data && data.results) setTopRated(data.results);
   };
 
-
-
+{/*
     return (
     <View className="flex-1 bg-neutral-800">
       {/* search bar */}
-      <SafeAreaView className={ios? "-mb-2": "mb-3"}>
+   {/*   <SafeAreaView className={ios? "-mb-2": "mb-3"}>
         <StatusBar style="light" />
         <View className="flex-row justify-between items-center mx-4">
           <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" />
@@ -72,22 +71,75 @@ export default function HomeScreen() {
           >
 
             {/* Trending Movies Carousel */}
-            { trending.length>0 && <TrendingMovies data={trending} /> }
-
+            {/*     { trending.length>0 && <TrendingMovies data={trending} /> }
+            
             {/* upcoming movies row */}
-            { upcoming.length>0 && <MovieList title="Upcoming" data={upcoming} /> }
+          {/*  { upcoming.length>0 && <MovieList title="Upcoming" data={upcoming} /> }
             
 
             {/* top rated movies row */}
-            { topRated.length>0 && <MovieList title="Top Rated" data={topRated} /> }
+           {/* { topRated.length>0 && <MovieList title="Top Rated" data={topRated} /> }
 
           </ScrollView>
         )
       }
       
   </View>
-      
-
-   
   );
+    */}
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#343434',
+      },
+      safeAreaView: {
+        marginBottom: Platform.OS === 'ios' ? -2 : 3,
+      },
+      headerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginHorizontal: 4,
+      },
+      headerText: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: 'bold',
+      },
+    });
+    return (
+      <View style={styles.container}>
+        {/* search bar */}
+        <SafeAreaView style={styles.safeAreaView}>
+          <StatusBar style="light" />
+          <View style={styles.headerContainer}>
+            <Bars3CenterLeftIcon name="bars" size={30} strokeWidth={2} color="white" />
+            <Text style={styles.headerText}>
+              Movies
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+              <MagnifyingGlassIcon name="search" size={30} strokeWidth={2} color="white" />
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+  
+        {loading ? (
+          <Loading />
+        ) : (
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 10 }}>
+            {/* Trending Movies Carousel */}
+            {trending.length > 0 && <TrendingMovies data={trending} />}
+  
+            {/* upcoming movies row */}
+            {upcoming.length > 0 && <MovieList title="Upcoming" data={upcoming} />}
+  
+            {/* top rated movies row */}
+            {topRated.length > 0 && <MovieList title="Top Rated" data={topRated} />}
+          </ScrollView>
+        )}
+      </View>
+    );
+  
+  
 }

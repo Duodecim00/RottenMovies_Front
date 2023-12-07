@@ -10,7 +10,7 @@ const {primary, tertiary} = Colors;
 
 import Login from "../screens/login/Login";
 import Register from "../screens/register/Register";
-import Welcome from "../screens/welcome/Welcome";
+import Profile from "../screens/profile/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +36,7 @@ export default function AppNavigation() {
         <Stack.Screen name="Search" options={{headerShown: false}} component={SearchScreen} />
         {/* <Stack.Screen name="Register" options={{headerShown: false}} component={Register}/> */}
         {/* <Stack.Screen nrame="Login" options={{headerShown: false}} component={Login}/> */}
-        {/* <Stack.Screen options={{headerTintColor: primary}} name="Welcome" component={Welcome}/> */}
+        {/* <Stack.Screen options={{headerTintColor: primary}} name="Profile" component={Profile}/> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

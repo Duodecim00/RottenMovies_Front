@@ -16,7 +16,7 @@ import {
 
 
 
-const Welcome = ({navigation}) => {
+const Profile = ({navigation}) => {
   return (
     <>
       <StatusBar style='light'/>
@@ -40,4 +40,4 @@ const Welcome = ({navigation}) => {
   );
 };
 
-  export default  Welcome;
+  export default  Profile;
