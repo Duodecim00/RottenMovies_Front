@@ -49,7 +49,7 @@ export default function HomeScreen() {
       backgroundColor: '#343434',
     },
     safeAreaView: {
-      marginBottom: Platform.OS === 'ios' ? -2 : 3,
+      marginBottom: Platform.OS === 'android' ? -2 : 3,
     },
     headerContainer: {
       flexDirection: 'row',

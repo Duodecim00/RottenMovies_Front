@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, Image, Dimensions, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { View, Text, Image, Dimensions, TouchableOpacity, ScrollView, Platform, StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowLeftIcon, ChevronLeftIcon } from 'react-native-heroicons/outline';
@@ -56,9 +56,58 @@ export default function MovieScreen() {
   };
 
   const moviePoster = image500(movie.poster_path) || fallbackMoviePoster;
+  const stylescustom = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#343434',
+    },
+    safeAreaView: {
+      marginBottom: Platform.OS === 'android' ? -2 : 3,
+    },
+    containerImage:{
+        position:'absolute',
+        height:150,
+
+    },
+    headerContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginHorizontal: 4,
+    },
+    headerText: {
+      color: 'white',
+      fontSize: 30,
+      fontWeight: 'bold',
+    },
+    normalText: {
+        display:'flex',
+        flexDirection:'row',
+        alignContent:'center',
+      color: 'white',
+      fontWeight:'bold',
+      fontSize: 15,
+    },
+    safeArea:{
+        position: 'absolute',
+        zIndex: 20,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: '4px',
+        paddingRight: '4px'
+    },
+    TouchableO:{
+        borderRadius: 100,
+        padding: '0.25rem'
+    }
+  });
+
 
   return (
-    <ScrollView contentContainerStyle={{ paddingBottom: 20 }} style={[styles.flex1, styles.bgNeutral900]}>
+    <ScrollView contentContainerStyle={{ paddingBottom: 20 }} style={stylescustom.container}>
 
       {/* back button and movie poster */}
       <View style={styles.wFull}>
@@ -75,7 +124,7 @@ export default function MovieScreen() {
         {loading ? (
           <Loading />
         ) : (
-          <View>
+          <View style={stylescustom.containerImage}>
             <Image source={{uri: image500(movie.poster_path) || fallbackMoviePoster}}
                         style={{width, height: height*0.55}} />
                 <LinearGradient 
@@ -92,23 +141,23 @@ export default function MovieScreen() {
       {/* movie details */}
       <View style={{marginTop: -(height*0.09)}} className="space-y-3">
         {/* title */}
-        <Text className="text-white text-center text-3xl font-bold tracking-widest">
+        <Text style={stylescustom.headerText}>
           {movie?.title}
         </Text>
 
         {/* status, release year, runtime */}
         {movie?.id && (
-          <Text className="text-neutral-400 font-semibold text-base text-center">
+          <Text style={stylescustom.normalText}>
             {movie?.status} • {movie?.release_date?.split('-')[0] || 'N/A'} • {movie?.runtime} min
           </Text>
         )}
 
         {/* genres  */}
-        <View className="flex-row justify-center mx-4 space-x-2">
+        <View style={stylescustom.headerContainer}className="flex-row justify-center mx-4 space-x-2">
           {movie?.genres?.map((genre, index) => {
             const showDot = index + 1 !== movie.genres.length;
             return (
-              <Text key={index} className="text-neutral-400 font-semibold text-base text-center">
+              <Text key={index} style={stylescustom.normalText}>
                 {genre?.name} {showDot ? "•" : null}
               </Text>
             );
@@ -116,7 +165,7 @@ export default function MovieScreen() {
         </View>
 
         {/* description */}
-        <Text className="text-neutral-400 mx-4 tracking-wide">
+        <Text style={stylescustom.normalText}>
           {movie?.overview}
         </Text>
       </View>
