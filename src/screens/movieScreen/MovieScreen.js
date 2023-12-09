@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, Image, Dimensions, TouchableOpacity, ScrollView, Platform, StyleSheet } from 'react-native';
+import { View, Text, Image, Dimensions, TouchableOpacity, Button,ScrollView, Platform, StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowLeftIcon, ChevronLeftIcon } from 'react-native-heroicons/outline';
@@ -10,7 +10,7 @@ import MovieList from '../components/movieList';
 import { fallbackMoviePoster, fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500 } from '../../api/moviedb';
 import { styles, theme } from '../../theme';
 import Loading from '../components/loading';
-
+import { Video, ResizeMode } from 'expo-av';
 
 const topMargin = ' mt-3';
 const { width, height } = Dimensions.get('window');
@@ -65,9 +65,8 @@ export default function MovieScreen() {
       marginBottom: Platform.OS === 'android' ? -2 : 3,
     },
     containerImage:{
-        position:'absolute',
-        height:150,
-
+      position: 'relative',
+      height: height * 0.4,
     },
     headerContainer: {
       flexDirection: 'row',
@@ -81,29 +80,49 @@ export default function MovieScreen() {
       fontWeight: 'bold',
     },
     normalText: {
-        display:'flex',
-        flexDirection:'row',
-        alignContent:'center',
+      display: 'flex',
+      flexDirection: 'row',
+      alignContent: 'center',
       color: 'white',
-      fontWeight:'bold',
+      fontWeight: 'bold',
       fontSize: 15,
     },
     safeArea:{
-        position: 'absolute',
-        zIndex: 20,
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingLeft: '4px',
-        paddingRight: '4px'
+      position: 'absolute',
+      zIndex: 20,
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingLeft: 4,
+      paddingRight: 4,
     },
     TouchableO:{
-        borderRadius: 100,
-        padding: '0.25rem'
-    }
+      borderRadius: 100,
+      padding: 0.25,
+    },
+    containerVideo: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    video:{
+      width: 300,
+      height: 200,
+    },
+    buttons: {
+      marginTop: 20,
+    },
   });
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
+    const handleToggleLooping = () => {
+    video.current.setIsLoopingAsync(!status.isLooping);
+  };
+  const handlePlayFromPosition = () => {
+    video.current.playFromPositionAsync(5000);
+  };
 
 
   return (
@@ -169,6 +188,24 @@ export default function MovieScreen() {
           {movie?.overview}
         </Text>
       </View>
+
+{/*Reproductor de video*/}
+<View style={styles.container}>
+      <Video
+        ref={video}
+        style={stylescustom.video}
+        source={{ uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+        onPlaybackStatusUpdate={setStatus}
+      />
+      <View style={stylescustom.buttons}>
+        <Button title="Play from 5s" onPress={handlePlayFromPosition} />
+        <Button title={status.isLooping ? "Set to not loop" : "Set to loop"} onPress={handleToggleLooping} />
+      </View>
+    </View>
+
       {/* cast */}
       {
         movie?.id && cast.length>0 && <Cast navigation={navigation} cast={cast} />
