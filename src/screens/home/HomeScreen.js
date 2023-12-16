@@ -45,7 +45,7 @@ export default function HomeScreen() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#343434',
+      backgroundColor: '#262626',
     },
     safeAreaView: {
       marginBottom: Platform.OS === 'android' ? -2 : 3,
