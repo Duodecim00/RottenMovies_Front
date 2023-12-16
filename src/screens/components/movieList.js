@@ -57,10 +57,17 @@ const styles = StyleSheet.create( {
   title: {
     color: 'white',
     fontSize: 26,
+    fontWeight: 'bold',
+    paddingLeft:10,
+    paddingRight:10,
+    marginBottom:5
   },
   seeAll: {
     color: 'white',
     fontSize: 26,
+    paddingLeft:10,
+    paddingRight:10,
+    marginBottom:5
   },
   scrollContainer: {
     paddingHorizontal: 15,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
+import IconButton from './IconButton';
 
 const CommentBox = () => {
   const [comment, setComment] = useState('');
@@ -23,7 +24,7 @@ const CommentBox = () => {
         value={comment}
         onChangeText={handleCommentChange}
       />
-      <Button title="Enviar" onPress={handleCommentSubmit} />
+      <IconButton iconName="send" color={"white"} size={30} onPress={handleCommentSubmit}/>
     </View>
   );
 };
@@ -38,12 +39,14 @@ const styles = StyleSheet.create({
   },
 input: {
     flex: 1,
-    height:40,
+    height:80,
     color: 'white',
     marginRight: 10,
+    textAlign: 'center',
+    fontSize:18,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 15,
     padding: 5,
   },
 });

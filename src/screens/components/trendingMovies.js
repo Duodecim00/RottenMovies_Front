@@ -1,8 +1,8 @@
-import { View, Text, Image, TouchableWithoutFeedback, Dimensions, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback, Dimensions, ScrollView } from 'react-native';
 import React from 'react';
-import Carousel from 'react-native-snap-carousel';
 import { useNavigation } from '@react-navigation/native';
 import { image500 } from '../../api/moviedb';
+
 
 var {width, height} = Dimensions.get('window');
 
@@ -12,9 +12,24 @@ export default function TrendingMovies({data}) {
     const handleClick = item=>{
         navigation.navigate('Movie', item);
     };
+
+    const styles = StyleSheet.create({
+        container:{
+            marginBottom:32,
+            marginTop:24,
+        },
+        textTitle:{
+            color:'white',
+            fontSize:35,
+            fontWeight: 'bold',
+            paddingLeft:10,
+            paddingRight:10,
+            marginBottom:20
+        }
+    });
   return (
-    <View className="mb-8">
-      <Text className="text-white text-xl mx-4 mb-5">Trending</Text>
+    <View style={styles.container}>
+      <Text style={styles.textTitle}>Trending</Text>
         <View style={{ paddingLeft: 10, borderRadius:10 }}>
         <ScrollView horizontal>
             {data.map((item) => (
@@ -39,7 +54,6 @@ const MovieCard = ({item, handleClick})=>{
                     borderRadius: 18,
                     marginRight: 10,
                 }}
-                className="rounded-3xl" 
             />
         </TouchableWithoutFeedback>
     );
