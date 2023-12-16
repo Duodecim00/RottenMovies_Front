@@ -50,7 +50,7 @@ export default function Chatscreen({ navigation }) {
           <Ionicons name="ios-arrow-back" size={30} color={"black"}  onPress={() => navigation.navigate('Home')}/>
           </Pressable>
           <Text style={styles.heading}>Welcome {currentUser}!</Text>
-          <IconButton iconName="md-chatbox-outline" color="white" size={24} onPress={() => navigation.navigate('Messagescreen')} />
+          <IconButton iconName="md-chatbox-outline" color={"black"} size={24} onPress={() => navigation.navigate('Messagescreen')} />
         </View>
       </View>
       <View style={styles.listContainer}>

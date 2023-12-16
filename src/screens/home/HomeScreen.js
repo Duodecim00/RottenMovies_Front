@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, ScrollView, Platform, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
+import { MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import TrendingMovies from '../components/trendingMovies';
 import MovieList from '../components/movieList';
 import { StatusBar } from 'expo-status-bar';
@@ -9,9 +9,6 @@ import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from '.
 import { useNavigation } from '@react-navigation/native';
 import Loading from '../components/loading';
 import IconButton from '../components/IconButton';
-import Messagescreen from '../messageScreen/MessageScreen';
-
-const ios = Platform.OS === 'ios';
 
 export default function HomeScreen() {
   const [trending, setTrending] = useState([]);
@@ -72,7 +69,7 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.safeAreaView}>
         <StatusBar style="light" />
         <View style={styles.headerContainer}>
-        <IconButton iconName="md-chatbox-outline" color={"white"} size={24} onPress={() => navigation.navigate('Chatscreen')} />
+        <IconButton iconName="chatbox" color={"white"} size={30} onPress={() =>  navigation.navigate('Chatscreen')} />
           <Text style={styles.headerText}>
             Movies
           </Text>

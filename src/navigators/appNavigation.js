@@ -33,7 +33,7 @@ export default function AppNavigation() {
                         paddingLeft: 20
                     } 
                 }}
-                initialRouteName="Home">
+                initialRouteName="Register">
                     
                     
                     
@@ -43,7 +43,7 @@ export default function AppNavigation() {
         <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen} />
         <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen} />
         <Stack.Screen name="Search" options={{headerShown: false}} component={SearchScreen} />
-        {/* <Stack.Screen name="Register" options={{headerShown: false}} component={Register}/> */}
+        <Stack.Screen name="Register" options={{headerShown: false}} component={Register}/>
         {/* <Stack.Screen nrame="Login" options={{headerShown: false}} component={Login}/> */}
         <Stack.Screen options={{headerTintColor: primary}} name="Profile" component={Profile}/>
       </Stack.Navigator>

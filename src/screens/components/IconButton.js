@@ -3,20 +3,16 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-const IconButton = ({ iconName, onPress }) => {
+const IconButton = ({ iconName, onPress, color}) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    if (onPress) {
-      onPress();
-    } else {
-      navigation.navigate('MessageScreen');
-    }
+    onPress();
   };
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <Ionicons name={iconName} size={32} color="#000" />
+      <Ionicons name={iconName} size={32} color={color} />
     </TouchableOpacity>
   );
 };

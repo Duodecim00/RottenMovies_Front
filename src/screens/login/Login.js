@@ -6,6 +6,7 @@ import { user_login } from '../../api/user_api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Octicons, Ionicons} from '@expo/vector-icons';
 import KeyBoardAvoidingWarapper from '../components/KeyboardAvoidingWrapper';
+import IconButton from '../components/IconButton';
 
 import {
   StyledContainer,
@@ -51,6 +52,7 @@ const Login = ({navigation}) => {
     <KeyBoardAvoidingWarapper>
       <StyledContainer>
         <StatusBar style='dark'/>
+        <IconButton iconName="home-outline" color={"white"} size={30} onPress={() =>  navigation.navigate("Home")}/>
         <InnerContainer>
             <PageLogo resizeMode="cover" source={require('../../../assets/images/pik8bis.png')}/>
             <PageTitle>Movies</PageTitle>
@@ -72,8 +74,8 @@ const Login = ({navigation}) => {
                       console.log(result);
                     if(result.status == 200){ 
                       console.log(result.data.token);
-                      AsyncStorage.setItem("AccessToken", result.data.token);
-                      navigation.replace("Welcome");
+                      // AsyncStorage.setItem("AccessToken", result.data.token);
+                      navigation.replace("Profile");
                   
                   
                   /*manejar los tokens

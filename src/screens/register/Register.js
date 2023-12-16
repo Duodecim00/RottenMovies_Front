@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import { ActivityIndicator, View } from "react-native";
 import KeyBoardAvoidingWarapper from "../components/KeyboardAvoidingWrapper";
+import IconButton from "../components/IconButton";
 
 import { Octicons, Ionicons } from "@expo/vector-icons";
 
@@ -44,6 +45,7 @@ const Register = ({navigation}) => {
     <KeyBoardAvoidingWarapper>
         <StyledContainer>
       <StatusBar style="dark" />
+      <IconButton iconName="home-outline" color={"white"} size={30} onPress={() =>  navigation.navigate("Home")}/>
       <InnerContainer>
         <PageTitle>Movies</PageTitle>
         <SubTitle>Account Register</SubTitle>
