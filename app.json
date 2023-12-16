@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#6D28D9"
-      }
+      },
+      "package": "com.cesarpalaciosr.MoviesApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "61347713-8da2-4b42-afe8-3cb315a045cc"
+      }
     }
   }
 }
