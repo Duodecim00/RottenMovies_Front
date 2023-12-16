@@ -10,8 +10,8 @@ import {
   StatusBar,
   Keyboard,
 } from "react-native";
-import { GlobalContext } from "../context";
-import { socket } from "../utils";
+import { GlobalContext } from "../../context";
+import { socket } from "../../utils";
 
 const NewGroupModal = () => {
   const {
@@ -68,7 +68,6 @@ const NewGroupModal = () => {
     </Modal>
   );
 };
-
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -80,6 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
+    width:400,
     // alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -122,5 +122,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
-
 export default NewGroupModal;

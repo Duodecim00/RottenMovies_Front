@@ -4,7 +4,17 @@ import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Chatcomponent({ item }) {
+export default function Chatcomponent(/*{ item }*/) {
+  const item = {
+    currentGroupName:'Grupo de clase xd',
+    id: '545454546',
+    messages:[
+      'mensaje de prueba',
+      'mensaje de prueba',
+      'mensaje de prueba',
+      'mensaje de prueba',
+    ]
+  };
   const navigation = useNavigation();
 
   console.log(item.messages[item.messages.length - 1]);

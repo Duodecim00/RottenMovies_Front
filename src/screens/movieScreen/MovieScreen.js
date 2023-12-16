@@ -11,6 +11,8 @@ import { fallbackMoviePoster, fetchMovieCredits, fetchMovieDetails, fetchSimilar
 import { styles, theme } from '../../theme';
 import Loading from '../components/loading';
 import { Video, ResizeMode } from 'expo-av';
+import CommentBox from '../components/CommentBox';
+import Rating from '../components/Rating';
 
 const topMargin = ' mt-3';
 const { width, height } = Dimensions.get('window');
@@ -213,6 +215,8 @@ export default function MovieScreen() {
 
       {/* similar movies section */}
       {movie?.id && similarMovies.length > 0 && <MovieList title={'Similar Movies'} hideSeeAll={true} data={similarMovies} />}
+      <CommentBox />
+      <Rating/>
     </ScrollView>
   );
 }

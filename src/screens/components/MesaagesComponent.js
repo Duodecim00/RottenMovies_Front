@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function Messagecomponent({ currentUser, item }) {
+export default function Messagecomponent({ currentUser/*, item */}) {
+  const item = {
+    currentUser:'Usuario generico',
+    text: 'texto generico'
+  };
   const currentUserStatus = item.currentUser !== currentUser;
 
   console.log(currentUserStatus , item);

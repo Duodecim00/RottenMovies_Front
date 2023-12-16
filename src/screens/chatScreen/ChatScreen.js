@@ -7,11 +7,12 @@ import {
   Text,
   View,
 } from "react-native";
-import { GlobalContext } from "../context";
-import { AntDesign } from "@expo/vector-icons";
+import { GlobalContext } from "../../context";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import Chatcomponent from "../components/ChatComponent";
 import NewGroupModal from "../components/Modal";
-import { socket } from "../utils";
+import { socket } from "../../utils";
+import IconButton from "../components/IconButton";
 export default function Chatscreen({ navigation }) {
   const {
     currentUser,
@@ -38,17 +39,18 @@ export default function Chatscreen({ navigation }) {
   }
 
   useEffect(() => {
-    if (currentUser.trim() === "") navigation.navigate("Homescreen");
+    if (currentUser.trim() === "a") navigation.navigate("Home");
   }, [currentUser]);
 
   return (
     <View style={styles.mainWrapper}>
       <View style={styles.topContainer}>
         <View style={styles.header}>
-          <Text style={styles.heading}>Welcome {currentUser}!</Text>
-          <Pressable onPress={handleLogout}>
-            <AntDesign name="logout" size={30} color={"black"} />
+          <Pressable  onPress={handleLogout}>
+          <Ionicons name="ios-arrow-back" size={30} color={"black"}  onPress={() => navigation.navigate('Home')}/>
           </Pressable>
+          <Text style={styles.heading}>Welcome {currentUser}!</Text>
+          <IconButton iconName="md-chatbox-outline" color="white" size={24} onPress={() => navigation.navigate('Messagescreen')} />
         </View>
       </View>
       <View style={styles.listContainer}>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   heading: {
     fontSize: 30,

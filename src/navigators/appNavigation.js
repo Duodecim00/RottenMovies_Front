@@ -34,19 +34,18 @@ export default function AppNavigation() {
                     } 
                 }}
                 initialRouteName="Home">
-                    <Stack.Screen
-            name="Chatscreen"
-            component={Chatscreen}
-            options={{ headerShown: false }}
-          />
+                    
+                    
+                    
+        <Stack.Screen name="Chatscreen" component={Chatscreen} options={{ headerShown: false }}/>
           <Stack.Screen name="Messagescreen" component={Messagescreen} />
-        {/* <Stack.Screen name="Home" options={{headerShown: false}} component={HomeScreen} /> */}
-        {/* <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen} /> */}
-        {/* <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen} /> */}
-        {/* <Stack.Screen name="Search" options={{headerShown: false}} component={SearchScreen} /> */}
+        <Stack.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
+        <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen} />
+        <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen} />
+        <Stack.Screen name="Search" options={{headerShown: false}} component={SearchScreen} />
         {/* <Stack.Screen name="Register" options={{headerShown: false}} component={Register}/> */}
         {/* <Stack.Screen nrame="Login" options={{headerShown: false}} component={Login}/> */}
-        {/* <Stack.Screen options={{headerTintColor: primary}} name="Profile" component={Profile}/> */}
+        <Stack.Screen options={{headerTintColor: primary}} name="Profile" component={Profile}/>
       </Stack.Navigator>
     </NavigationContainer>
     </GlobalState>

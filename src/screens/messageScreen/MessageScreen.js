@@ -9,11 +9,11 @@ import {
   View,
 } from "react-native";
 import { GlobalContext } from "../../context";
-import Messagecomponent from "../components/Messagecomponent";
+import Messagecomponent from "../components/MesaagesComponent";
 import  {socket}  from "../../utils/index";
 
-export default function Messagescreen({ navigation, route }) {
-  const { currentGroupName, currentGroupID } = route.params;
+export default function Messagescreen() {
+  // const { currentGroupName, currentGroupID } = route.params;
   const {
     allChatMessages,
     setAllChatMessages,
@@ -37,7 +37,7 @@ export default function Messagescreen({ navigation, route }) {
     if (currentUser) {
       socket.emit("newChatMessage", {
         currentChatMesage,
-        groupIdentifier: currentGroupID,
+        // groupIdentifier: currentGroupID,
         currentUser,
         timeData,
       });
@@ -49,7 +49,7 @@ export default function Messagescreen({ navigation, route }) {
 
 
   useEffect(()=>{
-    socket.emit('findGroup', currentGroupID);
+    // socket.emit('findGroup', currentGroupID);
     socket.on('foundGroup', (allChats)=> setAllChatMessages(allChats));
   },[socket]);
 

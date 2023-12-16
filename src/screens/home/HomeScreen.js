@@ -8,6 +8,8 @@ import { StatusBar } from 'expo-status-bar';
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from '../../api/moviedb';
 import { useNavigation } from '@react-navigation/native';
 import Loading from '../components/loading';
+import IconButton from '../components/IconButton';
+import Messagescreen from '../messageScreen/MessageScreen';
 
 const ios = Platform.OS === 'ios';
 
@@ -70,7 +72,7 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.safeAreaView}>
         <StatusBar style="light" />
         <View style={styles.headerContainer}>
-          <Bars3CenterLeftIcon name="bars" size={30} strokeWidth={2} color="white" />
+        <IconButton iconName="md-chatbox-outline" color={"white"} size={24} onPress={() => navigation.navigate('Chatscreen')} />
           <Text style={styles.headerText}>
             Movies
           </Text>
