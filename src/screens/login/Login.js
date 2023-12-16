@@ -1,9 +1,8 @@
 import React , {useState/*, useContext*/} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { user_login } from '../../api/user_api';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Octicons, Ionicons} from '@expo/vector-icons';
 import KeyBoardAvoidingWarapper from '../components/KeyboardAvoidingWrapper';
 import IconButton from '../components/IconButton';
@@ -52,7 +51,10 @@ const Login = ({navigation}) => {
     <KeyBoardAvoidingWarapper>
       <StyledContainer>
         <StatusBar style='dark'/>
-        <IconButton iconName="home-outline" color={"white"} size={30} onPress={() =>  navigation.navigate("Home")}/>
+        <View style={styles.container}>
+          <IconButton iconName="home-outline" color={"black"} size={30} onPress={() =>  navigation.navigate("Home")}/>
+          <IconButton iconName="person-outline" size={30} color="black"  onPress={() =>  navigation.navigate("Profile")}/>
+        </View>
         <InnerContainer>
             <PageLogo resizeMode="cover" source={require('../../../assets/images/pik8bis.png')}/>
             <PageTitle>Movies</PageTitle>
@@ -162,4 +164,14 @@ const  MyTextInput = ({label, icon, isPassword, hidePassword, setHidePassword,..
   );
 };
 
-  export default  Login;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center', 
+    height: 50, 
+  }
+});
+
+
+export default  Login;
